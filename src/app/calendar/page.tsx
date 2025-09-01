@@ -55,8 +55,7 @@ export default function CalendarPage() {
     addToast({
       title: 'Nueva tarea',
       message: `Creando tarea para ${date.toLocaleDateString('es-ES')}`,
-      type: 'info',
-      duration: 2000,
+      type: 'success',
     });
   };
 

@@ -128,7 +128,7 @@ export function NotificationCenter({ isOpen, onClose, onNotificationClick }: Not
       title: 'Notificaciones marcadas',
       message: 'Todas las notificaciones se marcaron como leídas',
       type: 'success',
-      duration: 3000,
+    //   duration: 3000,
     });
   };
 
@@ -144,7 +144,7 @@ export function NotificationCenter({ isOpen, onClose, onNotificationClick }: Not
       title: 'Notificaciones eliminadas',
       message: 'Todas las notificaciones se eliminaron',
       type: 'success',
-      duration: 3000,
+    //   duration: 3000,
     });
   };
 
