@@ -5,7 +5,6 @@ import { AppLayout } from '@/components/layout/AppLayout';
 import { ProfileForm } from '@/components/features/profile/ProfileForm';
 import { SecuritySettings } from '@/components/features/profile/SecuritySettings';
 import { ActivityLog } from '@/components/features/profile/ActivityLog';
-import { Button } from '@/components/ui/button';
 import { User, Shield, Activity } from 'lucide-react';
 
 export default function ProfilePage() {

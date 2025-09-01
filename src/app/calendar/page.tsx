@@ -5,7 +5,7 @@ import { AppLayout } from '@/components/layout/AppLayout';
 import { CalendarView } from '@/components/features/calendar/CalendarView';
 import { TaskForm } from '@/components/features/tasks/TaskForm';
 import { useTasks } from '@/hooks/useTasks';
-import { Task, TaskStatus, TaskPriority } from '@/types';
+import { Task } from '@/types';
 import { useToast } from '@/components/ui/toast';
 
 export default function CalendarPage() {
