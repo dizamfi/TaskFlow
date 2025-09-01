@@ -472,7 +472,6 @@ import {
   LogOut,
   Bell,
   User,
-  Plus,
   ChevronDown,
   Zap,
   Clock,

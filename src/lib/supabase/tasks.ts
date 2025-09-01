@@ -1,5 +1,5 @@
 import { supabase } from './client';
-import type { Task, TaskStatus, TaskPriority, FilterOptions } from '@/types';
+import type { Task, FilterOptions } from '@/types';
 
 export class TaskService {
   // Crear tarea

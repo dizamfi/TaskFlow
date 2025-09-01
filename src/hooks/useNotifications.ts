@@ -22,7 +22,6 @@ export function useNotifications() {
   // Generar notificaciones automáticas basadas en tareas
   const generateTaskNotifications = useCallback((tasks: any[]) => {
     const now = new Date();
-    const tomorrow = new Date(now.getTime() + 24 * 60 * 60 * 1000);
     const newNotifications: Notification[] = [];
 
     tasks.forEach(task => {

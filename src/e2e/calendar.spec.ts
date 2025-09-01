@@ -1,6 +1,5 @@
 import { test, expect } from '@playwright/test';
 import { signIn } from './setup/auth';
-import { createTask } from './setup/tasks';
 
 test.describe('Calendar', () => {
   test.beforeEach(async ({ page }) => {
