@@ -118,9 +118,9 @@ describe("Task Management Flow Integration", () => {
       );
 
       // Verify form is pre-filled
-      expect(screen.getByDisplayValue(taskToEdit.title)).toBeInTheDocument();
+      expect(screen.getByDisplayValue(taskToEdit!.title)).toBeInTheDocument();
       expect(
-        screen.getByDisplayValue(taskToEdit.description!)
+        screen.getByDisplayValue(taskToEdit!.description!)
       ).toBeInTheDocument();
 
       // Update title
@@ -164,7 +164,7 @@ describe("Task Management Flow Integration", () => {
 
       render(
         <TaskList
-          tasks={[mockTasks[0]]}
+          tasks={[mockTasks[0]!]}
           onEdit={mockOnEdit}
           onDelete={mockOnDelete}
           onStatusChange={mockOnStatusChange}
@@ -185,7 +185,7 @@ describe("Task Management Flow Integration", () => {
 
       render(
         <TaskList
-          tasks={[mockTasks[0]]}
+          tasks={[mockTasks[0]!]}
           onEdit={mockOnEdit}
           onDelete={mockOnDelete}
           onStatusChange={mockOnStatusChange}
@@ -197,7 +197,7 @@ describe("Task Management Flow Integration", () => {
       await user.click(statusButton);
 
       expect(mockOnStatusChange).toHaveBeenCalledWith(
-        mockTasks[0].id,
+        mockTasks[0]!.id,
         TaskStatus.COMPLETED
       );
     });

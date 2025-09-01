@@ -338,7 +338,7 @@ export function CalendarListView({ tasks, onTaskClick, loading = false }: Calend
     
     return sortedDates.map(dateKey => ({
       date: new Date(dateKey),
-      tasks: groups[dateKey].sort((a, b) => {
+      tasks: groups[dateKey]!.sort((a, b) => {
         // Ordenar por prioridad primero, luego por hora
         const priorityOrder = { high: 3, medium: 2, low: 1 };
         const aPriority = priorityOrder[a.priority as keyof typeof priorityOrder] || 1;

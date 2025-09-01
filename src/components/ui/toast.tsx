@@ -117,9 +117,113 @@
 
 
 
+// 'use client';
+
+// import React, { createContext, useContext, useState, useCallback } from 'react';
+// import { X, CheckCircle, XCircle, AlertCircle } from 'lucide-react';
+
+// interface Toast {
+//   id: string;
+//   title: string;
+//   message: string;
+//   type: 'success' | 'error' | 'warning';
+// }
+
+// interface ToastContextType {
+//   toasts: Toast[];
+//   addToast: (toast: Omit<Toast, 'id'>) => void;
+//   removeToast: (id: string) => void;
+// }
+
+// const ToastContext = createContext<ToastContextType | undefined>(undefined);
+
+// export function ToastProvider({ children }: { children: React.ReactNode }) {
+//   const [toasts, setToasts] = useState<Toast[]>([]);
+
+//   const addToast = useCallback((toast: Omit<Toast, 'id'>) => {
+//     const id = Math.random().toString(36).substring(7);
+//     const newToast = { ...toast, id };
+    
+//     setToasts(prev => [...prev, newToast]);
+    
+//     setTimeout(() => {
+//       removeToast(id);
+//     }, 5000);
+//   }, []);
+
+//   const removeToast = useCallback((id: string) => {
+//     setToasts(prev => prev.filter(toast => toast.id !== id));
+//   }, []);
+
+//   return (
+//     <ToastContext.Provider value={{ toasts, addToast, removeToast }}>
+//       {children}
+//       <ToastContainer />
+//     </ToastContext.Provider>
+//   );
+// }
+
+// export function useToast() {
+//   const context = useContext(ToastContext);
+//   if (!context) {
+//     throw new Error('useToast must be used within a ToastProvider');
+//   }
+//   return context;
+// }
+
+// function ToastContainer() {
+//   const { toasts, removeToast } = useToast();
+
+//   if (toasts.length === 0) return null;
+
+//   return (
+//     <div className="fixed top-4 right-4 z-50 space-y-2">
+//       {toasts.map((toast) => (
+//         <ToastComponent key={toast.id} toast={toast} onClose={() => removeToast(toast.id)} />
+//       ))}
+//     </div>
+//   );
+// }
+
+// function ToastComponent({ toast, onClose }: { toast: Toast; onClose: () => void }) {
+//   const icons = {
+//     success: <CheckCircle className="h-5 w-5 text-green-600" />,
+//     error: <XCircle className="h-5 w-5 text-red-600" />,
+//     warning: <AlertCircle className="h-5 w-5 text-yellow-600" />
+//   };
+
+//   const bgColors = {
+//     success: 'bg-green-50 border-green-200',
+//     error: 'bg-red-50 border-red-200',
+//     warning: 'bg-yellow-50 border-yellow-200'
+//   };
+
+//   return (
+//     <div className={`
+//       flex items-start gap-3 p-4 rounded-xl border shadow-lg backdrop-blur-sm
+//       animate-in slide-in-from-right duration-300
+//       ${bgColors[toast.type]}
+//     `}>
+//       {icons[toast.type]}
+//       <div className="flex-1 min-w-0">
+//         <h4 className="text-sm font-semibold text-slate-900">{toast.title}</h4>
+//         <p className="text-sm text-slate-600">{toast.message}</p>
+//       </div>
+//       <button
+//         onClick={onClose}
+//         className="text-slate-400 hover:text-slate-600 transition-colors"
+//       >
+//         <X className="h-4 w-4" />
+//       </button>
+//     </div>
+//   );
+// }
+
+
+
 'use client';
 
-import React, { createContext, useContext, useState, useCallback } from 'react';
+import React, { createContext, useContext, useState, useCallback, useRef } from 'react';
 import { X, CheckCircle, XCircle, AlertCircle } from 'lucide-react';
 
 interface Toast {
@@ -139,6 +243,18 @@ const ToastContext = createContext<ToastContextType | undefined>(undefined);
 
 export function ToastProvider({ children }: { children: React.ReactNode }) {
   const [toasts, setToasts] = useState<Toast[]>([]);
+  const timeoutsRef = useRef<Map<string, NodeJS.Timeout>>(new Map());
+
+  const removeToast = useCallback((id: string) => {
+    setToasts(prev => prev.filter(toast => toast.id !== id));
+    
+    // Limpiar timeout si existe
+    const timeout = timeoutsRef.current.get(id);
+    if (timeout) {
+      clearTimeout(timeout);
+      timeoutsRef.current.delete(id);
+    }
+  }, []);
 
   const addToast = useCallback((toast: Omit<Toast, 'id'>) => {
     const id = Math.random().toString(36).substring(7);
@@ -146,14 +262,13 @@ export function ToastProvider({ children }: { children: React.ReactNode }) {
     
     setToasts(prev => [...prev, newToast]);
     
-    setTimeout(() => {
+    // Auto-remove después de 5 segundos
+    const timeout = setTimeout(() => {
       removeToast(id);
     }, 5000);
-  }, []);
-
-  const removeToast = useCallback((id: string) => {
-    setToasts(prev => prev.filter(toast => toast.id !== id));
-  }, []);
+    
+    timeoutsRef.current.set(id, timeout);
+  }, [removeToast]);
 
   return (
     <ToastContext.Provider value={{ toasts, addToast, removeToast }}>
@@ -212,6 +327,7 @@ function ToastComponent({ toast, onClose }: { toast: Toast; onClose: () => void 
       <button
         onClick={onClose}
         className="text-slate-400 hover:text-slate-600 transition-colors"
+        aria-label="Cerrar notificación"
       >
         <X className="h-4 w-4" />
       </button>

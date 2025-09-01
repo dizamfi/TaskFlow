@@ -27,7 +27,7 @@ describe('Task Validations', () => {
       const result = createTaskSchema.safeParse(invalidTask);
       expect(result.success).toBe(false);
       if (!result.success) {
-        expect(result.error.issues[0].path).toContain('title');
+        expect(result.error?.issues[0]!.path).toContain('title');
       }
     });
 
