@@ -10,7 +10,6 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { useTasks } from '@/hooks/useTasks';
 import { 
   Download, 
-  Filter, 
   Calendar, 
   BarChart3,
   TrendingUp,
