@@ -14,7 +14,6 @@ import {
   CheckSquare, 
   Clock, 
   AlertCircle, 
-  TrendingUp,
   Calendar,
   Target
 } from 'lucide-react';

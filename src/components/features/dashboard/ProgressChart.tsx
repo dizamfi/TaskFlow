@@ -12,7 +12,6 @@ export function ProgressChart({ stats }: ProgressChartProps) {
   const { completionRate, completedTasks, totalTasks } = stats;
 
   // Calcular ángulo para el gráfico circular
-  const angle = (completionRate / 100) * 360;
   const radius = 45;
   const circumference = 2 * Math.PI * radius;
   const strokeDasharray = circumference;

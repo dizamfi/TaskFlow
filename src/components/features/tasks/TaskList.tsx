@@ -4,7 +4,7 @@ import React from 'react';
 import { Task } from '@/types';
 import { TaskCard } from './TaskCard';
 import { Empty } from '@/components/ui/empty';
-import { CheckSquare, Search } from 'lucide-react';
+import { CheckSquare} from 'lucide-react';
 
 interface TaskListProps {
   tasks: Task[];

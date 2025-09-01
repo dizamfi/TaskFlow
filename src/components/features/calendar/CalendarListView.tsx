@@ -182,7 +182,6 @@ import {
   Calendar,
   Sparkles,
   Target,
-  Users,
   TrendingUp,
   MapPin
 } from 'lucide-react';
@@ -194,7 +193,7 @@ interface CalendarListViewProps {
   loading?: boolean;
 }
 
-export function CalendarListView({ tasks, currentDate, onTaskClick, loading = false }: CalendarListViewProps) {
+export function CalendarListView({ tasks, onTaskClick, loading = false }: CalendarListViewProps) {
   // Loading state elegante
   if (loading) {
     return (

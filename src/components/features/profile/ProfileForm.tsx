@@ -10,7 +10,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { useToast } from '@/components/ui/toast';
-import { User, Save, Mail } from 'lucide-react';
+import { User, Save} from 'lucide-react';
 
 export function ProfileForm() {
   const { user } = useAuth();

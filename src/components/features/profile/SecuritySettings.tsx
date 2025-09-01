@@ -4,7 +4,6 @@ import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import { AuthService } from '@/lib/supabase/auth';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -40,7 +39,7 @@ export function SecuritySettings() {
     resolver: zodResolver(changePasswordSchema),
   });
 
-  const onSubmit = async (data: ChangePasswordInput) => {
+  const onSubmit = async () => {
     setLoading(true);
     try {
       // TODO: Implementar cambio de contraseña con Supabase

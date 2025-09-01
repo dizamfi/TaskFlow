@@ -269,12 +269,9 @@ import {
   TrendingDown,
   AlertTriangle,
   Calendar,
-  CheckCircle2,
   BarChart3,
   Award,
   Zap,
-  Users,
-  Globe
 } from 'lucide-react';
 
 interface ReportsOverviewProps {
@@ -338,7 +335,6 @@ export function ReportsOverview({ tasks, period }: ReportsOverviewProps) {
 
     // Productividad comparada con período anterior
     const prevStartDate = new Date(startDate);
-    const prevEndDate = new Date(startDate);
     
     switch (period) {
       case 'week':

@@ -768,14 +768,12 @@
 import React, { useState, useMemo } from 'react';
 import { Task, TaskStatus } from '@/types';
 import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
 import { Card, CardContent } from '@/components/ui/card';
 import { 
   ChevronLeft, 
   ChevronRight, 
   Calendar as CalendarIcon,
   Plus,
-  Filter,
   Grid3x3,
   List,
   Eye,
@@ -785,7 +783,7 @@ import {
   Moon,
   Sun
 } from 'lucide-react';
-import { cn, formatDate } from '@/lib/index';
+import { cn} from '@/lib/index';
 import { CalendarListView } from './CalendarListView';
 
 interface CalendarViewProps {

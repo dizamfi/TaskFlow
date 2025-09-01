@@ -40,22 +40,7 @@ describe('useAuth Hook', () => {
   });
 
   it('should set user when session exists', async () => {
-    const mockSession = {
-      user: {
-        id: mockUser.id,
-        email: mockUser.email,
-        user_metadata: { full_name: mockUser.full_name },
-        created_at: mockUser.created_at,
-      },
-      access_token: 'mock_access_token',
-      refresh_token: 'mock_refresh_token',
-      expires_in: 3600,
-      token_type: 'bearer',
-      // Optionally add other Session fields if needed
-    };
 
-    const mockGetSession = vi.mocked(supabaseClient.supabase.auth.getSession);
-    const mockOnAuthStateChange = vi.mocked(supabaseClient.supabase.auth.onAuthStateChange);
     
     
 

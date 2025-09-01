@@ -3,12 +3,10 @@
 import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { useToast } from '@/components/ui/toast';
 import { formatRelativeTime } from '@/lib/index';
 import { 
   Bell, 
-  BellRing, 
   Check, 
   X, 
   AlertTriangle, 

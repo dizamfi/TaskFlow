@@ -150,7 +150,6 @@ import { Button } from '@/components/ui/button';
 import { Task, TaskStatus } from '@/types';
 import { 
   TrendingUp, 
-  Calendar, 
   BarChart3, 
   Activity,
   Target,

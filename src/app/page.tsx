@@ -47,6 +47,7 @@ export default function HomePage() {
 
   // Verificar autenticación
   useEffect(() => {
+    
     if (!loading && !user) {
       router.push('/auth/signin');
       
