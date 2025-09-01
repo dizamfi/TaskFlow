@@ -221,7 +221,7 @@ export function TaskCard({ task, onEdit, onDelete, onStatusChange, loading = fal
   // Loading state elegante y profesional
   if (loading) {
     return (
-      <Card className="group relative overflow-hidden transition-all duration-300 border-0 shadow-sm hover:shadow-lg bg-white animate-in fade-in duration-500">
+      <Card className="group relative overflow-hidden transition-all  border-0 shadow-sm hover:shadow-lg bg-white animate-in fade-in">
         {/* Borde lateral skeleton */}
         <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-gray-200 to-gray-300 animate-pulse" />
         
