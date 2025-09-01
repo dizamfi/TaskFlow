@@ -1,18 +1,7 @@
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  experimental: {
-    appDir: true,
-  },
-  
-  // Configuración básica para Vercel
-  eslint: {
-    dirs: ['src'],
-  },
-  
-  typescript: {
-    ignoreBuildErrors: false,
-  },
-  
+  // Configuración mínima - Next.js 14 ya tiene App Router por defecto
   images: {
     domains: ['images.unsplash.com'],
   },
