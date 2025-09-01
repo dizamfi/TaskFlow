@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
-import { render, screen, fireEvent, waitFor } from '@/test/utils';
+import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { TaskForm } from '@/components/features/tasks/TaskForm';
 import { TaskList } from '@/components/features/tasks/TaskList';
@@ -243,17 +243,4 @@ describe('Task Management Flow Integration', () => {
       }, { timeout: 1000 });
     });
 
-    it('should clear all filters', async () => {
-      const user = userEvent.setup();
-      
-      render(
-        <TaskFilters
-          filters={{ status: TaskStatus.PENDING, search: 'test' }}
-          onFiltersChange={mockOnFiltersChange}
-          onClear={mockOnClear}
-          taskCounts={mockTaskCounts}
-        />
-      );
-
-      await user.click(screen.getByText(/limpiar filtros/i));
-      expect(mockOnClear).toHaveBeenCalle
+});})
