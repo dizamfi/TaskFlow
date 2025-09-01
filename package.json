@@ -14,7 +14,6 @@
     "test:coverage": "jest --coverage",
     "build:analyze": "ANALYZE=true npm run build",
     "clean": "rm -rf .next && rm -rf out",
-    "postinstall": "husky install",
     "prepare": "is-ci || husky install"
   },
   "dependencies": {
